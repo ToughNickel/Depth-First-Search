@@ -8,7 +8,7 @@ typedef enum bool {false = 0,true} boolean;
 
 class Graph
 {
-     int edges[MAX][MAX],*visited,nodes,sides,*connect,x;
+     int edges[MAX][MAX],*visited,nodes,sides,*order,x;
      void dfs(int);
    public:
      Graph()
@@ -26,7 +26,7 @@ void Graph :: input()
 {
      cout << "\nGive the number of nodes : ";cin >> nodes;
      cout << "\nGive the number of edges : ";cin >> sides;
-     visited = new int [nodes];connect = new int [nodes];
+     visited = new int [nodes];order = new int [nodes];
 
      for(int i = 0;i < nodes;i++) visited[i] = false;
 
@@ -68,7 +68,7 @@ void Graph :: traverse()
 	if(!visited[i])
 	{
 	   visited[i] = true;
-	   connect[++x] = i + 1;
+	   order[++x] = i + 1;
 	   dfs(i);
 	}
 }
@@ -79,15 +79,15 @@ void Graph :: dfs(int source)
 	if(edges[source][i] && !visited[i])
 	{
 	   visited[i] = true;
-	   connect[++x] = i + 1;
+	   order[++x] = i + 1;
 	   dfs(i);
 	}
 }
 
 void Graph :: print()
 {
-    cout << "\n[ " << connect[0];
-    for(int i = 1;i < nodes;i++) cout << " , " << connect[i];
+    cout << "\n[ " << order[0];
+    for(int i = 1;i < nodes;i++) cout << " , " << order[i];
     cout << " ]\n";
     x = -1;
 }
