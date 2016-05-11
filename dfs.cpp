@@ -3,7 +3,6 @@
 #include <timer.h>
 
 typedef enum bool {false = 0,true} boolean;
-
 #define MAX 10
 
 class Graph
