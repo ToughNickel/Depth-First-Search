@@ -104,7 +104,7 @@ int main()
     else cout << "\nThe graph is connected\n";
     G.print();
     
-    cout << "\nTime taken for this operation is : " << t.time() << "\n";
+    cout << "\nTime taken for this operation is : " << t.time() << " seconds\n";
 
     getch();
     return 0;
