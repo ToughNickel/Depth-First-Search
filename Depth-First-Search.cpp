@@ -100,7 +100,7 @@ int main()
 
     G.input();
     t.start();G.traverse();t.stop();
-    if(G.isConnected() == false) cout << "\nThe graph is DIS-connected\n";
+    if(G.isConnected() == false) cout << "\nThe graph is UN-connected\n";
     else cout << "\nThe graph is connected\n";
     G.print();
     
