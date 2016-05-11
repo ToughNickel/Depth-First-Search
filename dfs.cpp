@@ -3,6 +3,7 @@
 #include <timer.h>
 
 typedef enum bool {false = 0,true} boolean;
+
 #define MAX 10
 
 class Graph
@@ -102,6 +103,8 @@ int main()
     if(G.isConnected() == false) cout << "\nThe graph is DIS-connected\n";
     else cout << "\nThe graph is connected\n";
     G.print();
+    
+    cout << "\nTime taken for this operation is : " << t.time() << "\n";
 
     getch();
     return 0;
