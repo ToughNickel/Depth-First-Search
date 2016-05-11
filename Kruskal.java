@@ -44,6 +44,7 @@ public class Solution
     public static void main(String[] args) throws Exception
     {
         Scanner bt = new Scanner( System.in );
+        PrintWriter exe = new PrintWriter( System.out,true );
         n = bt.nextInt();int m = bt.nextInt();
         List<Integer> s = new ArrayList<>();
         List<Integer> e = new ArrayList<>();
@@ -120,7 +121,7 @@ public class Solution
         }
         //--------------
         for(int i = 0;i < w1.size();i++) Wsum += w1.get(i);
-        System.out.println(Wsum);
+        exe.println(Wsum);
     }
     public static void clear(List<Integer> s,List<Integer> e,List<Integer> w,int start,int end)
     {
