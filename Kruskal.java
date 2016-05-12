@@ -9,7 +9,7 @@ import java.util.regex.*;
 /*-------------------------------
 Sample input as to how to give input for this program
 
-4 6             //4 is no. of nodes and 6 the number of edges...rest are source and destination of various edges  
+4 6             //4 is no. of nodes and 6 the number of edges...rest are source,destination and weight of various edges  
 1 2 5
 1 3 3
 4 1 6
