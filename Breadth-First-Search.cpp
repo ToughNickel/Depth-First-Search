@@ -3,7 +3,7 @@
 #include <timer.h>
 
 /*--------------------------------
-The nodes are numbered from 1 to last...don't enter from 1..always start from one
+The nodes are numbered from 1 to last...don't enter from 0..always start from 1
 --------------------------------*/
 
 typedef enum bool {false = 0,true} boolean;
