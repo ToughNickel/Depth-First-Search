@@ -27,7 +27,7 @@ void Graph :: input()
      while(1)
      {
 	 cout << "\nGive the number of nodes : ";cin >> nodes;
-	 if(nodes > MAX) cout << "\nGive the nodes lesser than 20\n";
+	 if(nodes >= MAX) cout << "\nGive the nodes lesser than 20\n";
 	 else break;
      }
      cout << "\nGive the number of edges : ";cin >> sides;
