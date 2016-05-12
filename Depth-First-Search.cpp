@@ -24,9 +24,14 @@ class Graph
 
 void Graph :: input()
 {
-     cout << "\nGive the number of nodes : ";cin >> nodes;
+     while(1)
+     {
+	 cout << "\nGive the number of nodes : ";cin >> nodes;
+	 if(nodes >= MAX) cout << "\nGive the nodes lesser than 20\n";
+	 else break;
+     }
      cout << "\nGive the number of edges : ";cin >> sides;
-     visited = new int [nodes];order = new int [nodes];
+     visited = new int [nodes];connect = new int [nodes];
 
      for(int i = 0;i < nodes;i++) visited[i] = false;
 
