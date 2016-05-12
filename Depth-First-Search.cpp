@@ -2,6 +2,10 @@
 #include <conio.h>
 #include <timer.h>
 
+/*--------------------------------
+The nodes are numbered from 1 to last...don't enter from 1..always start from one
+--------------------------------*/
+
 typedef enum bool {false = 0,true} boolean;
 
 #define MAX 10
