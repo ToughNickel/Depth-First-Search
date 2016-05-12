@@ -35,7 +35,7 @@ void Graph :: input()
 	 else break;
      }
      cout << "\nGive the number of edges : ";cin >> sides;
-     visited = new int [nodes];connect = new int [nodes];
+     visited = new int [nodes];order = new int [nodes];
 
      for(int i = 0;i < nodes;i++) visited[i] = false;
 
