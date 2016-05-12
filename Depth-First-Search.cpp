@@ -96,7 +96,7 @@ void Graph :: dfs(int source)
 void Graph :: print()
 {
     cout << "\n[ " << order[0];
-    for(int i = 0;i < nodes;i++) cout << " , " << order[i];
+    for(int i = 1;i < nodes;i++) cout << " , " << order[i];
     cout << " ]\n";
     x = -1;
 }
