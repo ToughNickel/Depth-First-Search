@@ -24,6 +24,7 @@ class Graph
      void traverse();
      boolean isConnected();
      void print();
+     void randomize();
 };
 
 void Graph :: input()
@@ -101,6 +102,33 @@ void Graph :: print()
     x = -1;
 }
 
+void Graph :: randomize()
+{
+    Timer t;
+    cout << "\nNow comes the data to be tabulated\n";
+    for(int i = 1;i < MAX;i++)
+    {
+	nodes = i;
+	visited = new int [nodes];connect = new int [nodes];
+	for(int i = 0;i < nodes;i++) visited[i] = false;
+
+	for(int j = 0;j < nodes;j++)
+	    for(int k = 0;k < nodes;k++)
+		edges[j][k] = -1;
+
+	for(int row = 0;row < nodes;row++)
+	   for(int col = 0;col < nodes;col++)
+	   {
+	       if(edges[row][col] != -1) continue;
+	       int tmp = rand() % 2;
+	       edges[row][col] = edges[col][row] = tmp;
+	   }
+	t.start();traverse();t.stop();
+	cout << "For nodes : " << nodes << " time taken is : " << t.time();
+	cout << " seconds\n";t.reset();
+    }
+}
+
 int main()
 {
     Graph G;
@@ -114,7 +142,7 @@ int main()
     G.print();
     
     cout << "\nTime taken for this operation is : " << t.time() << " seconds\n";
-
+    G.randomize();
     getch();
     return 0;
 }
