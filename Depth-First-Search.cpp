@@ -110,7 +110,7 @@ void Graph :: randomize()
     for(int i = 1;i < MAX;i++)
     {
 	nodes = i;
-	visited = new int [nodes];connect = new int [nodes];
+	visited = new int [nodes];order = new int [nodes];
 	for(int i = 0;i < nodes;i++) visited[i] = false;
 
 	for(int j = 0;j < nodes;j++)
