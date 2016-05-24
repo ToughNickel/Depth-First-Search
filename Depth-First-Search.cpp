@@ -1,6 +1,7 @@
 #include <iostream.h>
 #include <conio.h>
 #include <timer.h>
+#include <stdlib.h>
 
 /*--------------------------------
 The nodes are numbered from 1 to last...don't enter from 0..always start from 1
