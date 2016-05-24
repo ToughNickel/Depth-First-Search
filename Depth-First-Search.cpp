@@ -111,7 +111,7 @@ void Graph :: randomize()
     {
 	nodes = i;
 	visited = new int [nodes];order = new int [nodes];
-	for(int i = 0;i < nodes;i++) visited[i] = false;
+	for(int c = 0;c < nodes;c++) visited[c] = false;
 
 	for(int j = 0;j < nodes;j++)
 	    for(int k = 0;k < nodes;k++)
