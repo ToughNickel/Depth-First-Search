@@ -6,6 +6,9 @@
 #define MAX 20
 /*---------------------------------------------------------------------
 for general purpose comment the randomize() statement in main() i.e., G.randomize()
+and for getting the bulk data...comment all except G.randomize
+
+telling this just for clarity
 ---------------------------------------------------------------------*/
 
 class Edge
