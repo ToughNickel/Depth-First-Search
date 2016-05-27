@@ -11,11 +11,11 @@ class Edge
      int start,end,weight;
      Edge()
      {
-	       start = end = weight = 0;
+	 start = end = weight = 0;
      }
      void print()
      {
-	       cout << "From  " << start << " To  " << end << "  (wt : "<< weight<<")\n";
+	 cout << "From  " << start << " To  " << end << "  (wt : "<< weight<<")\n";
      }
 };
 
@@ -26,8 +26,8 @@ class Graph
     public :
      Graph()
      {
-	       nodes = sides = Wsum = 0;
-	       x = v = -1;
+	 nodes = sides = Wsum = 0;
+	 x = v = -1;
      }
      void input();
      void start_PRIMS_frm(int);
