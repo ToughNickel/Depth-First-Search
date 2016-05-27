@@ -102,7 +102,7 @@ void Graph :: start_Kruskal()
 	    Wsum += min;
 	    parent[v] = u;
 	 }
-	 edges[start][end] = 999;
+	 edges[start][end] = 999;edges[end][start] = 999;
     }
 }
 
@@ -152,7 +152,7 @@ int main()
     t.start();G.start_Kruskal();t.stop();
     G.printTree();
     cout << "\nTime taken for this is : " << t.time() << " seconds\n";
-    G.randomize();
+    //G.randomize();                   //uncomment this only for bulk operation..,otherwise its gonna mess up the screen
 
     getch();
     return 0;
