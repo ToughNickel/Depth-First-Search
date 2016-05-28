@@ -15,7 +15,7 @@ class Edge
      }
      void print()
      {
-	 cout << "From  " << start << " To  " << end << "  (wt : "<< weight<<")\n";
+	  cout << "From  " << start << " To  " << end << "  (wt : "<< weight<<")\n";
      }
 };
 
@@ -26,8 +26,8 @@ class Graph
     public :
      Graph()
      {
-	 nodes = sides = Wsum = 0;
-	 x = v = -1;
+	nodes = sides = Wsum = 0;
+	x = v = -1;
      }
      void input();
      void start_PRIMS_frm(int);
@@ -110,7 +110,15 @@ void Graph :: randomize()
 	for(int k = 0;k < nodes;k++)  visited[k] = 0;
 	for(int row = 0;row < nodes;row++)
 	    for(int col = 0;col < nodes;col++)
-		edges[row][col] = (rand() % 999) + 1;
+		edges[row][col] = -1;
+
+	for(int w = 0;w < nodes;w++)
+	    for(int s = 0;s < nodes;s++)
+	    {
+		int tmp = (rand() % 999) + 1;
+		if(edges[w][s] != -1) continue;
+		else  edges[w][s] = edges[s][w] = tmp;
+	    }
 
 	t.start();start_PRIMS_frm(1);t.stop();
 	cout << "\nFor operation : " << nodes;
@@ -128,7 +136,7 @@ int main()
     t.start();G.start_PRIMS_frm(src);t.stop();
     G.printTree();
     cout << "\nTime taken for this is : " << t.time() << " seconds\n";
-    G.randomize();
+    //G.randomize();                      //uncomment this only for bulk operation
     getch();
     return 0;
 }
