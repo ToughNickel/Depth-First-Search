@@ -133,8 +133,16 @@ void Graph :: randomize()
 
        for(int row = 0;row < nodes;row++)
 	   for(int col = 0;col < nodes;col++)
-	       edges[row][col] = (rand() % 999) + 1;
-
+	       edges[row][col] = -1;
+	       
+       for(int k = 0;k < nodes;k++)
+           for(int l = 0;l < nodes;l++)
+           {
+           	int tmp = (rand() % 999) + 1;
+           	if(edges[k][l] != -1) continue;
+           	else edges[k][l] = edges[l][k] = tmp;
+           }
+  
        t.start();start_Kruskal();t.stop();
        cout << "\nFor operation " << nodes;
        cout << " time taken is : " << t.time() << " seconds";
