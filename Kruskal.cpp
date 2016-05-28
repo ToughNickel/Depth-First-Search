@@ -90,7 +90,7 @@ void Graph :: start_Kruskal()
 		   end = v = j;
 		}
 
-	 //checking for cycles
+	 //checking for cycles 
 	 while(parent[u] != -1) u = parent[u];
 	 while(parent[v] != -1) v = parent[v];
 
