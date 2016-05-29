@@ -187,7 +187,7 @@ int main()
        cin >> ch;
     }
     
-    //for(int i = 350;i <= 500;i += 50) mango.randomize(i);          //uncomment this only for bulk operation
+    //for(int i = 50;i <= 500;i += 50) mango.randomize(i);          //uncomment this only for bulk operation
     getch();
     return 0;
 }
