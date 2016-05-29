@@ -133,7 +133,7 @@ void Graph :: randomize()
 
        for(int row = 0;row < nodes;row++)
 	   for(int col = 0;col < nodes;col++)
-	       edges[row][col] = -1;
+	       parent [row] = edges[row][col] = -1;
 	       
        for(int k = 0;k < nodes;k++)
            for(int l = 0;l < nodes;l++)
