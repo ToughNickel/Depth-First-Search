@@ -85,6 +85,7 @@ void ArrayList :: randomize()
        t.start();heapsort();t.stop();
        cout << "\nFor operation : " << n;
        cout << " time taken is : " << t.time() << " seconds";
+       t.reset();
     }
 }
 
