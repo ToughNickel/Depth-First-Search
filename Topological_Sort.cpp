@@ -140,7 +140,7 @@ int main()
     t.start();G.topo_sort();t.stop();
     G.print();
     cout << "\nTime taken for this is : " << t.time() << " seconds\n";
-    //G.randomize();      //uncomment this only for bulk operation(by commenting from G.input() to jus before G.randomize())
+    //G.randomize();      //uncomment this only for bulk operation(by commenting from G.input() to just before G.randomize())
     getch();
     return 0;
 }
