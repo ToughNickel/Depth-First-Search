@@ -34,7 +34,7 @@ void Case :: prepareShiftTable()
     for(int i = 0;i < 26;i++) shiftTable[i] = patternlen;
 
     for(int j = 0;j < patternlen - 1;j++)
-	shiftTable[pattern[i] - 'a'] = patternlen - j - 1;
+	shiftTable[pattern[j] - 'a'] = patternlen - j - 1;
 }
 
 int Case :: Horspool_Machine()
