@@ -9,7 +9,7 @@
 
 class Graph
 {
-     int edges[MAX][MAX],nodes,sides,x,*visited,v,Wsum,*counter;
+     int edges[MAX][MAX],nodes,sides,x,v,Wsum;
      int *d,*sptSet;
      int minDistance();
     public :
@@ -32,15 +32,12 @@ void Graph :: input()
 	 if(nodes >= MAX) cout << "Give number of nodes less than 20\n";
 	 else break;
      }
-     visited = new int [nodes];
-     counter = new int [nodes];
      d = new int [nodes];
      sptSet = new int [nodes];
 
      for(int k = 0;k < nodes;k++)
 	 for(int l = 0;l < nodes;l++)
 	 {
-	     visited[k] = 0;
              d[k] = INT_MAX;
 	     sptSet[k] = 0;
 	     edges[k][l] = 999;
