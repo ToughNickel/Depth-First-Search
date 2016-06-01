@@ -90,7 +90,7 @@ void Graph :: print()
      printf("Vertex \tDistance from Source\n");
 
    for (int i = 0; i < nodes; i++)
-      printf("%d \t\t %d\n", i, d[i]);
+      printf("%d \t\t %d\n", i + 1, d[i]);
 }
 
 void Graph :: randomize()
