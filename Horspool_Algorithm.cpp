@@ -59,10 +59,11 @@ void Case :: randomize()
    for(int i = 1000;i <= 10000;i += 1000)
    {
       pattern[1] = '\0';
-      cout << "\nFor operation : " << i;
-      textlen = i;patternlen = (int)( textlen / ((rand() % 10) + 1) );
+      cout << "\nFor operation : textlen = " << i;
+      textlen = i;patternlen = textlen - (rand() % i) - 1;
+      cout << " patternlen =  " << patternlen;
       for(int j = 0;j < textlen - 1;j++) text[j] = (rand() % 26) + 'a';
-
+     
       strrev(text);
       strncpy(pattern,text,patternlen);
       strrev(text);
