@@ -68,6 +68,7 @@ void Game_of_Queens :: resolve ()
 		if(!placed[cand])
 		{
 			placed[--cand] = false;
+			clear(cand);
 
 			for(k = 0;k < n;k++)
 			    if(board[cand][k] == 'Q')
@@ -75,7 +76,6 @@ void Game_of_Queens :: resolve ()
 				   board[cand][k] = 'X';
 				   break;
 			    }
-			clear(cand);
 		}
 		else cand++;
 	}
