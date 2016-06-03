@@ -73,7 +73,7 @@ void Game_of_Queens :: resolve ()
 			for(k = 0;k < n;k++)
 			    if(board[cand][k] == 'Q')
 			    {
-				   board[cand][k] = 'X';
+				   board[cand][k] = vacant;
 				   break;
 			    }
 		}
@@ -153,7 +153,7 @@ int main()
     Cersei.play();
     t.start();Cersei.resolve();t.stop();
     Cersei.solution();
-    cout << "\nBy the way.., it took the machine " <<t.time() << " seconds\n";
+    cout << "\nBy the way.., it took the machine " << t.time() << " seconds\n";
     getch();
     return 0;
 }
