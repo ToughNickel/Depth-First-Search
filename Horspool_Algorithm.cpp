@@ -66,6 +66,7 @@ void Case :: randomize()
      
       strrev(text);
       strncpy(pattern,text,patternlen);
+      strrev(pattern);
       strrev(text);
 
       t.start();Horspool_Machine();t.stop();
