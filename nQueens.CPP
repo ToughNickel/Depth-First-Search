@@ -3,6 +3,19 @@
 #include <timer.h>
 #include <limits.h>
 
+/*--------------------------------------------
+
+This program just gives one solution ..., coz that's what the aim of backtracking(--duhh--)
+
+play() === input function
+placement() == function to place queens in their respective places in the row
+debard() == function to restrict places with respect to an already placed queen
+clear() == function to UN - restrict places with respect to placed queen which is being re - placed
+isQueen() == function to check whether the given cell has queen in the board
+print_solution() == function to print the board
+
+--------------------------------------------*/
+
 #define MAX 20
 
 typedef enum bo {false = 0,true} boolean;
@@ -152,14 +165,6 @@ void Game_of_Queens :: print_solution()
 	   cout << "\n";
        }
     }
-    /*else
-    {
-       for(i = 0;i < n;i++)
-       {
-	  for(j = 0;j < n;j++) cout << board[i][j] << " ";
-	  cout << endl;
-       }
-    }*/
 }
 
 int main()
