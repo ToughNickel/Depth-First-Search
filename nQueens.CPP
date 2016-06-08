@@ -1,7 +1,6 @@
 #include <iostream.h>
 #include <conio.h>
 #include <timer.h>
-#include <limits.h>
 
 /*--------------------------------------------
 
@@ -133,7 +132,7 @@ void Game_of_Queens :: clear(int cand)
     if(cand < n - 1)
     {
        for(i = 0;i < n;i++)
-	   if(board[cand + 1][i] < 0 || board[cand + 1][i] == INT_MAX)
+	   if(board[cand + 1][i] < 0)
 	      board[cand + 1][i] = 0;
     }
 }
