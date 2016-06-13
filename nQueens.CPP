@@ -77,7 +77,11 @@ void Game_of_Queens :: placement()
 	      debard(cand,i);
 	   }
 
-       if(!placed[0])  s = 0;
+       if(!placed[0])  
+       {
+       	   s = 0;
+       	   break;
+       }	   
 
        if(!placed[cand])
        {
