@@ -149,7 +149,7 @@ boolean Game_of_Queens :: isQueen(int x,int y)
 
 void Game_of_Queens :: print_solution()
 {
-    int i,j,cap,dap;
+    int i,j;
     if(!s) cout << "\nSolution doesn't exist\n";
     else
     {
