@@ -1,90 +1,73 @@
 #include <iostream.h>
+#include <stdio.h>
 #include <conio.h>
 #include <timer.h>
-#include <stdlib.h>
 #include <string.h>
 
 class Case
 {
     char text[10001],pattern[10001];
-    int shiftTable[26],textlen,patternlen;
+    int textlen,patternlen,shiftTable[95];
     void prepareShiftTable();
   public :
     Case()
     {
-	 textlen = patternlen = 0;
+       textlen = patternlen = 0;
     }
-    void read();
+
+    void input();
     int Horspool_Machine();
-    void randomize();
 };
 
-void Case :: read()
+void Case :: input()
 {
-    cout << "\nGive the main TEXT : ";
-    cout << "\n(only give lowercase english letters)\n";
+    cout << "\nGive the text : ";
     cin >> text;
     cout << "\nGive the pattern to be searched : ";
-    cin >> pattern;
+    scanf("%s",pattern);
+
     textlen = strlen(text);patternlen = strlen(pattern);
 }
 
 void Case :: prepareShiftTable()
 {
-    for(int i = 0;i < 26;i++) shiftTable[i] = patternlen;
+    for(int i = 0;i < 95;i++) shiftTable[i] = patternlen;
 
     for(int j = 0;j < patternlen - 1;j++)
-	shiftTable[pattern[j] - 'a'] = patternlen - j - 1;
+	shiftTable[pattern[j] - '0'] = patternlen - j - 1;
 }
 
 int Case :: Horspool_Machine()
 {
-   prepareShiftTable();
-   int i = patternlen - 1;
-   while(i < textlen)
-   {
-       int k = 0;
-       while(k < patternlen && pattern[patternlen - 1 - k] == text[i - k])
-	    k++;
+    prepareShiftTable();
 
-       if(k == patternlen) return  (i - patternlen + 1);
-       else i += shiftTable[text[i] - 'a'];
-   }
-   return -1;
+    int i = patternlen - 1;
+
+    while(i < textlen)
+    {
+	int k = 0;
+
+	while(k < patternlen && pattern[patternlen - 1 - k] == text[i - k])
+	   k++;
+
+	if(k == patternlen) return (i - patternlen + 1);
+	else  i += shiftTable[text[i] - '0'];
+    }
+
+    return -1;
 }
 
-void Case :: randomize()
-{
-   Timer t;
-   for(int i = 1000;i <= 10000;i += 1000)
-   {
-      pattern[1] = '\0';
-      cout << "\nFor operation : textlen = " << i;
-      textlen = i;patternlen = textlen - (rand() % i) - 1;
-      cout << " patternlen =  " << patternlen;
-      for(int j = 0;j < textlen - 1;j++) text[j] = (rand() % 26) + 'a';
-     
-      strrev(text);
-      strncpy(pattern,text,patternlen);
-      strrev(pattern);
-      strrev(text);
-
-      t.start();Horspool_Machine();t.stop();
-      cout << " time taken : " << t.time() << " seconds";t.reset();
-   }
-}
-
-int main ()
+int main()
 {
    clrscr();
-   Timer t;
-   Case c;int pos = 0;
-   c.read();
-   t.start();pos = c.Horspool_Machine();t.stop();
-   if(pos == -1) cout << "\nMatch couldn't be found\n";
-   else cout << "\nFound at index (1 - indexed) : " << pos + 1 << "\n";
-   cout << "\nTime taken for this is : " << t.time() << " seconds\n";
-   //c.randomize();     //uncomment this only for bulk operation
+   int index;
+   Case C;
+   C.input();
+   index = C.Horspool_Machine();
+
+   if(index == -1) cout << "\nMatch couldn't be found\n";
+   else cout << "\nMatch found at position "<< (index + 1) <<"\n";
+
    getch();
    return 0;
 }
