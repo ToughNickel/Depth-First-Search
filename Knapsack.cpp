@@ -1,102 +1,107 @@
 #include <iostream.h>
 #include <conio.h>
 #include <timer.h>
-#include <stdlib.h>
 
 int max(int a,int b)
 {
-    if(a > b) return a;
-    else return b;
+    return ((a > b)?a:b);
 }
 
-class Knapsack
+class Case
 {
-    int *weight,*value,**table,*final,n,Mval,Mwt,capacity;
-    int prepareTable(int,int);
+    int *value,*weight,capacity,MaxValue,*final,x,**table,n;
+    void prepareTable();
   public :
-    Knapsack()
+    Case()
     {
-       n = Mval = Mwt = capacity = 0;
+       capacity = x = -1;
     }
-    void input();
+    void read();
     void BestSet();
+    void printSolution();
 };
 
-void Knapsack :: input()
+void Case :: read()
 {
-    cout << "\nGive the number of items : ";cin >> n;
-    weight = new int [n + 1];value = new int [n + 1];
-    *table = new int [n + 1]; final = new int [n];
-    weight[0] = 0;value[0] = 0;
-    cout << "\nNow give the item's values and its weights\n";
-    for(int s = 1;s <= n;s++)
+    cout << "\nGive the number of items : ";
+    cin >> n;
+    weight = new int [n + 1];weight[0] = 0;
+    value = new int [n + 1];value[0] = 0;
+    *table = new int [n + 1];
+    for(int i = 0;i <= n;i++) table[i] = new int [n + 1];
+
+    for(int row = 0;row <= n;row++)
+	table[row][0] = 0;
+
+    for(int col = 0;col <= n;col++)
+	table[0][col] = 0;
+
+    cout << "\nNow give the item's value and its weights\n";
+
+    for(int j = 1;j <= n;j++)
     {
-       cout << "Value : ";cin >> value[s];
-       cout << "its Weight : ";cin >> weight[s];cout << "\n";
+       cout << "\nItem " << j << "'s value : ";
+       cin >> value[j];
+       cout << "Its' Weight : "; cin >> weight[j];
     }
 
-    cout << "\nGive Knapsack's maximum capacity : ";cin >> capacity;
-    for(int w = 0;w <= n;w++) table[w] = new int [capacity + 1];
+    cout << "\nNow give the knapsack's max capacity : ";
+    cin >> capacity;
+}
 
-    for(int i = 0;i <= n;i++)
-	for(int j = 0;j <= capacity;j++)
+void Case :: prepareTable()
+{
+    for(int row = 1;row <= n;row++)
+	for(int col = 1;col <= n;col++)
 	{
-	    if(!i || !j) table[i][j] = 0;
-	    else table[i][j] = -1;
+	    if(weight[row] > col) table[row][col] = table[row - 1][col];
+	    else
+	    table[row][col] = max(table[row - 1][col],value[row] + table[row - 1][col - weight[row]]);
 	}
 }
 
-int Knapsack :: prepareTable(int i,int j)
+void Case :: BestSet()
 {
-    int v = 0,p1 = 0,p2 = 0;
-    if(table[i][j] < 0)
+    int item,mass;
+    prepareTable();
+    final = new int [n];
+
+    item = n;mass = capacity;
+
+    while(item > 0 && mass > 0)
     {
-	if(j < weight[i]) v = prepareTable(i - 1,j);
-	else
+	if(table[item][mass] != table[item - 1][mass])
 	{
-	    p1 = prepareTable(i - 1,j);
-	    p2 = prepareTable(i - 1,j - weight[i]) + value[i];
-	    v = max( p1 , p2 );
+	   mass -= weight[item];
+	   final[++x] = item;
 	}
 
-	table[i][j] = v;
+	item--;
     }
-    return table[i][j];
 }
 
-void Knapsack :: BestSet()
+void Case :: printSolution()
 {
-    int items = n,mass = capacity,x = -1;
-    Mval = prepareTable(n,capacity);
+   cout << "\nThe optimal Knapsack configuration is : ";
+   cout << "\n[ " << final[0];MaxValue = value[final[0]];
 
-    while(items && mass)
-    {
-	if(table[items][mass] != table[items - 1][mass])
-	{
-	   mass -=  weight[items];
-	   final[++x] = items;
-	}
-	items--;
-    }
-
-    cout << "\nThe optimal knapsack configuration is \n";
-    cout << "\n[ " << final[0];Mwt += weight[ final[0] ];
-    for(int i = 1;i <= x;i++)
-    {
+   for(int i = 1;i <= x;i++)
+   {
        cout << " , " << final[i];
-       Mwt += weight[ final[i] ];
-    }
-    cout << " ]\n";
-    cout << "The maximum value possible is : " << Mval;
-    cout << "\nWith maximum weight : " << Mwt;cout << "\n";
+       MaxValue += value[final[i]];
+   }
+   cout << " ]\n";
+
+   cout << "The profit is : " << MaxValue << "\n";
 }
 
 int main()
 {
-    clrscr();
-    Knapsack K;
-    K.input();
-    K.BestSet();
-    getch();
-    return 0;
+   clrscr();
+   Case obj;
+   obj.read();
+   obj.BestSet();
+   obj.printSolution();
+   getch();
+   return 0;
 }
