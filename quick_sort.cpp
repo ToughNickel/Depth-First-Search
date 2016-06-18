@@ -2,6 +2,7 @@
 #include <conio.h>
 #include <timer.h>
 #include <stdlib.h>
+#include <malloc.h>
 
 class ArrayList
 {
@@ -12,7 +13,7 @@ class ArrayList
      void quicksort();
      void actual_sort(int,int);
      void print();
-     void randomize();
+     void randomize(int);
 };
 
 void ArrayList :: read()
@@ -34,9 +35,9 @@ void ArrayList :: actual_sort(int low,int high)
     int l;
     if(low < high)
     {
-        l = median(low,high);
-        actual_sort(low,l - 1);
-        actual_sort(l + 1,high);
+	l = median(low,high);
+	actual_sort(low,l - 1);
+	actual_sort(l + 1,high);
     }
 }
 
@@ -48,36 +49,36 @@ int ArrayList :: median(int left,int right)
 
     while(1)
     {
-        int tmp;
-        if(pivot == l)
-        {
-            while(a[r] > a[pivot] && r > l) r--;
+	int tmp;
+	if(pivot == l)
+	{
+	    while(a[r] > a[pivot] && r > l) r--;
 
-            if(r > l)
-            {
-                tmp = a[pivot];
-                a[pivot] = a[r];
-                a[r] = tmp;
+	    if(r > l)
+	    {
+		tmp = a[pivot];
+		a[pivot] = a[r];
+		a[r] = tmp;
 
-                pivot = r;
-            }
-            else break;
-        }
+		pivot = r;
+	    }
+	    else break;
+	}
 
-        if(pivot == r)
-        {
-           while(a[l] < a[pivot] && l < r) l++;
+	if(pivot == r)
+	{
+	   while(a[l] < a[pivot] && l < r) l++;
 
-            if(l < r)
-            {
-                tmp = a[pivot];
-                a[pivot] = a[l];
-                a[l] = tmp;
+	    if(l < r)
+	    {
+		tmp = a[pivot];
+		a[pivot] = a[l];
+		a[l] = tmp;
 
-                pivot = l;
-            }
-            else break;
-        }
+		pivot = l;
+	    }
+	    else break;
+	}
     }
 
     return pivot;
@@ -92,18 +93,16 @@ void ArrayList :: print()
     cout << " ]\n";
 }
 
-void ArrayList :: randomize()
+void ArrayList :: randomize(int size)
 {
     Timer t;
-    for(int i = 1000;i <= 6000;i += 1000)
-    {
-        n = i;
-        for(int j = 0;j < n;j++) a[i] = j + 1;
-        
-        t.start();randomize();t.stop();
-        cout << "\nFor operation : " << n << " time taken is : " << t.time();
-        t.reset();
-    }
+    a = new int [5000];
+    for(int i = 0;i < size;i++) a[i] = size - i;
+
+    t.start();actual_sort(0,size - 1);t.stop();
+    cout << "For operation " << size << " time taken is : " << t.time();
+    cout << " seconds\n";
+    free(a);
 }
 
 int main()
@@ -115,7 +114,11 @@ int main()
     t.start();obj.quicksort();t.stop();
     obj.print();
     cout << "\nTime taken for this is : " << t.time() << " seconds\n";
-    //obj.randomize();         //uncomment this only for this bulk operation
+
+    //uncomment this only for this bulk operation
+
+    //for(int i = 500;i <= 3500;i += 500) obj.randomize(i);
+
     getch();
     return 0;
 }
