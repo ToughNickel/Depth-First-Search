@@ -17,6 +17,7 @@ class Case
 
     void input();
     int Horspool_Machine();
+    void randomize();
 };
 
 void Case :: input()
